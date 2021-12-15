@@ -1,5 +1,7 @@
 package labs_examples.arrays.labs;
 
+import java.util.Scanner;
+
 /**
  *  More labs_examples.arrays
  *
@@ -15,6 +17,19 @@ public class Exercise_02 {
         int[] array = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
         // write code here
+        Scanner scan = new Scanner(System.in);
+        int userInt;
+
+
+
+        System.out.println("Enter a number from 1-10.");
+        userInt = scan.nextInt();
+
+        for (int i = 0; i < array.length; i++) {
+            if(userInt == array[i]){
+                System.out.println("Your number has an array index of: " + i);
+            }
+        }
 
 
     }

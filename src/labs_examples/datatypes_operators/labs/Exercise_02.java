@@ -25,5 +25,15 @@ public class Exercise_02 {
 
         // write code here
 
+        int x = 10;
+        double c = x;
+
+        System.out.println(c);
+
+        double a = 10.5;
+        int d = (int) a;
+
+        System.out.println(d);
+
     }
 }

@@ -1,5 +1,7 @@
 package labs_examples.arrays.labs;
 
+import java.util.ArrayList;
+
 /**
  *  ArrayLists
  *
@@ -10,4 +12,19 @@ package labs_examples.arrays.labs;
  *
  */
 public class Exercise_07 {
+
+    public static void main(String[] args) {
+
+        ArrayList<Integer> nums = new ArrayList<>();
+
+        nums.add(23);
+        nums.add(4);
+        nums.add(2342);
+        nums.add(987);
+
+        nums.remove(3);
+        nums.remove(2);
+
+        System.out.println("The size of nums array is: " + nums.size());
+    }
 }

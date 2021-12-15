@@ -24,6 +24,17 @@ public class Exercise_07 {
         int days = scanner.nextInt();
 
         // write completed code here
+       // int hoursinDay = 12;
+       // int minutesinDay = hoursinDay * 60;
+        //is it better to make an equation here instead of jumping right to the secondsinDay variable?
 
+        int secondsinDay = 86400;
+        int daystoSeconds = (days * secondsinDay );
+
+        System.out.println("There are " + daystoSeconds + " seconds in " + days + " days.");
+
+
+        scanner.close();
     }
+
 }
