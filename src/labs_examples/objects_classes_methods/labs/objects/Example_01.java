@@ -4,9 +4,14 @@ public class Example_01 {
 
     public static void main(String[] args) {
 
-        Airplane myAirplane = new Airplane(true, 254, 754, 354);
+        Type myType = new Type(true);
+        MaxSpeed myMaxSpeed = new MaxSpeed(674);
+        FuelCapacity myFuelCapacity = new FuelCapacity(457);
+        CurrentFuelLevel myCurrentFuelLevel = new CurrentFuelLevel(324);
+        Airplane myAirplane = new Airplane(myType.isCommercial(), myMaxSpeed.getMaxSpeed(),
+                myFuelCapacity.getFuelCapacity(), myCurrentFuelLevel.getCurrentFuelLevel());
 
-        System.out.println(myAirplane.toString());
+        System.out.println(myAirplane);
 
     }
 
@@ -14,11 +19,16 @@ public class Example_01 {
 }
 
 class Airplane {
-    boolean type;
-    double maxSpeed;
-    double fuelCapacity;
-    double currentFuelLevel;
+    private boolean type;
+    private double maxSpeed;
+    private double fuelCapacity;
+    private double currentFuelLevel;
 
+ //   public Airplane(){} --> default constructor
+    //have(don't have to assign all variables(could be filled out later in program))
+    // to type in all the variables separately, on different lines
+
+    //constructor; a special type of class, creating an instance of a class
     public Airplane(boolean type, double maxSpeed, double fuelCapacity, double currentFuelLevel) {
         this.type = type;
         this.maxSpeed = maxSpeed;
@@ -39,9 +49,17 @@ class Airplane {
 
 class FuelCapacity {
     //double
-    double fuelCapacity;
+    private double fuelCapacity;
 
     public FuelCapacity(double fuelCapacity) {
+        this.fuelCapacity = fuelCapacity;
+    }
+
+    public double getFuelCapacity() {
+        return fuelCapacity;
+    }
+
+    public void setFuelCapacity(double fuelCapacity) {
         this.fuelCapacity = fuelCapacity;
     }
 
@@ -55,9 +73,17 @@ class FuelCapacity {
 
 class CurrentFuelLevel {
     //double
-    double currentFuelLevel;
+    private double currentFuelLevel;
 
     public CurrentFuelLevel(double currentFuelLevel) {
+        this.currentFuelLevel = currentFuelLevel;
+    }
+
+    public double getCurrentFuelLevel() {
+        return currentFuelLevel;
+    }
+
+    public void setCurrentFuelLevel(double currentFuelLevel) {
         this.currentFuelLevel = currentFuelLevel;
     }
 
@@ -71,9 +97,17 @@ class CurrentFuelLevel {
 
 class Type {
     //boolean commercial or not
-    boolean commercial;
+    private boolean commercial;
 
     public Type(boolean commercial) {
+        this.commercial = commercial;
+    }
+//why is this "isCommercial" instead of "getCommercial"
+    public boolean isCommercial() {
+        return commercial;
+    }
+
+    public void setCommercial(boolean commercial) {
         this.commercial = commercial;
     }
 
@@ -86,9 +120,17 @@ class Type {
 }
 
 class MaxSpeed {
-    double maxSpeed;
+    private double maxSpeed;
 
     public MaxSpeed(double maxSpeed){
+        this.maxSpeed = maxSpeed;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(double maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
