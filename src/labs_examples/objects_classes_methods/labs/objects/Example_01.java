@@ -19,17 +19,17 @@ public class Example_01 {
 }
 
 class Airplane {
-    private boolean type;
-    private double maxSpeed;
-    private double fuelCapacity;
-    private double currentFuelLevel;
+    private Type type;
+    private MaxSpeed maxSpeed;
+    private FuelCapacity fuelCapacity;
+    private CurrentFuelLevel currentFuelLevel;
 
  //   public Airplane(){} --> default constructor
     //have(don't have to assign all variables(could be filled out later in program))
     // to type in all the variables separately, on different lines
 
     //constructor; a special type of class, creating an instance of a class
-    public Airplane(boolean type, double maxSpeed, double fuelCapacity, double currentFuelLevel) {
+    public Airplane(Type type, MaxSpeed maxSpeed, FuelCapacity fuelCapacity, CurrentFuelLevel currentFuelLevel) {
         this.type = type;
         this.maxSpeed = maxSpeed;
         this.fuelCapacity = fuelCapacity;
