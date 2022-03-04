@@ -23,9 +23,6 @@ public class Hand {
 
     public int returnScore(){
 
-
-
-
         int total = 0;
 
         for(Card x : cards){

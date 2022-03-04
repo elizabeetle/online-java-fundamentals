@@ -15,7 +15,7 @@ public class BlackjackController {
 
     Deck blackJackDeck = new Deck();
     blackJackDeck.populateCards();
-    blackJackDeck.deal();
+//    blackJackDeck.deal();
 
     Hand newHand = new Hand();
 

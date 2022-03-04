@@ -10,7 +10,7 @@ public class Deck{
     Card[] deck = new Card[52];
     //the above is related to the Card class...
     ArrayList<Integer> usedCards = new ArrayList();
-    ArrayList<Integer> fromCards = new ArrayList();
+    ArrayList<Integer> handArrayList = new ArrayList();
 
 
     int count;
@@ -18,11 +18,14 @@ public class Deck{
     private char[] suit = new char[]{'♠', '♦', '♥', '♣'};
 
     Hand addToHand = new Hand();
+
+
     private int randHolder;
-
-
     public int getRandHolder() {
         return randHolder;
+    }
+    public void setRandHolder(int randHolder){
+        this.randHolder = randHolder;
     }
 
 
@@ -53,7 +56,7 @@ public class Deck{
         }
         System.out.println();
     }
-        public void deal() {
+        public void deal(Player player) {
         //random number generator with high/low values
         //pull the matching index from the deck[]
         //check if it has been drawn, if yes, draw new card...
@@ -67,12 +70,10 @@ public class Deck{
             do{
 
                 int randomNum = ThreadLocalRandom.current().nextInt(1,52 + 1);
-                randHolder = randomNum;
+                setRandHolder(randomNum);
                 //checks usedCards[] for the random number to see if it's been drawn
                 if(!usedCards.contains(randHolder)){
                     usedCards.add(randHolder);
-
-
 
                     addToCards();
                     break;
@@ -86,12 +87,12 @@ public class Deck{
 
 
         public List<Integer> getCards(){
-            return fromCards;
+            return handArrayList;
         }
 
         public void addToCards(){
-        fromCards = new ArrayList<Integer>();
-        fromCards.add(randHolder);
+        handArrayList = new ArrayList<Integer>();
+        handArrayList.add(randHolder);
         }
 
 
