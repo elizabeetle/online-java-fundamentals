@@ -4,18 +4,24 @@ public class Example_01 {
 
     public static void main(String[] args) {
 
-        Type myType = new Type(true);
-        MaxSpeed myMaxSpeed = new MaxSpeed(674);
-        FuelCapacity myFuelCapacity = new FuelCapacity(457);
-        CurrentFuelLevel myCurrentFuelLevel = new CurrentFuelLevel(324);
-        Airplane myAirplane = new Airplane(myType.isCommercial(), myMaxSpeed.getMaxSpeed(),
-                myFuelCapacity.getFuelCapacity(), myCurrentFuelLevel.getCurrentFuelLevel());
+
+
+        Type myType = new Type();
+        MaxSpeed myMaxSpeed = new MaxSpeed();
+        FuelCapacity myFuelCapacity = new FuelCapacity();
+        CurrentFuelLevel myCurrentFuelLevel = new CurrentFuelLevel();
+
+        myType.isCommercial(true);
+        myMaxSpeed.setMaxSpeed(674);
+        myFuelCapacity.setFuelCapacity(475);
+        myCurrentFuelLevel.setCurrentFuelLevel(324);
+
+        Airplane myAirplane = new Airplane(myType, myMaxSpeed,
+                myFuelCapacity, myCurrentFuelLevel);
 
         System.out.println(myAirplane);
 
     }
-
-
 }
 
 class Airplane {
@@ -51,9 +57,9 @@ class FuelCapacity {
     //double
     private double fuelCapacity;
 
-    public FuelCapacity(double fuelCapacity) {
-        this.fuelCapacity = fuelCapacity;
-    }
+ //   private FuelCapacity(double fuelCapacity) {
+ //       this.fuelCapacity = fuelCapacity;
+ //   }
 
     public double getFuelCapacity() {
         return fuelCapacity;
@@ -75,9 +81,9 @@ class CurrentFuelLevel {
     //double
     private double currentFuelLevel;
 
-    public CurrentFuelLevel(double currentFuelLevel) {
-        this.currentFuelLevel = currentFuelLevel;
-    }
+ //   public CurrentFuelLevel(double currentFuelLevel) {
+ //       this.currentFuelLevel = currentFuelLevel;
+ //   }
 
     public double getCurrentFuelLevel() {
         return currentFuelLevel;
@@ -99,15 +105,15 @@ class Type {
     //boolean commercial or not
     private boolean commercial;
 
-    public Type(boolean commercial) {
-        this.commercial = commercial;
-    }
-//why is this "isCommercial" instead of "getCommercial"
+ //   public Type(boolean commercial) {
+ //       this.commercial = commercial;
+ //   }
+
     public boolean isCommercial() {
         return commercial;
     }
 
-    public void setCommercial(boolean commercial) {
+    public void isCommercial(boolean commercial) {
         this.commercial = commercial;
     }
 
@@ -122,9 +128,9 @@ class Type {
 class MaxSpeed {
     private double maxSpeed;
 
-    public MaxSpeed(double maxSpeed){
-        this.maxSpeed = maxSpeed;
-    }
+ //   public MaxSpeed(double maxSpeed){
+ //       this.maxSpeed = maxSpeed;
+ //   }
 
     public double getMaxSpeed() {
         return maxSpeed;
@@ -141,3 +147,6 @@ class MaxSpeed {
                 '}';
     }
 }
+
+
+

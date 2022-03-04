@@ -1,6 +1,7 @@
 
 Without running the code below, please tell me what it will print.
 
+It will print "Parent called." because the Type will take precedence over the instance creation.
 
 
 public class InheritanceTest

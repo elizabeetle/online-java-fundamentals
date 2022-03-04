@@ -32,7 +32,7 @@ public class Exercise_07 {
         char[] charsFromUserString = userWord.toCharArray();
 
         while(userWord.toLowerCase().indexOf(vowels) == -1){
-
+            System.out.println(charsFromUserString);
         }
 
         System.out.println(charsFromUserString);
