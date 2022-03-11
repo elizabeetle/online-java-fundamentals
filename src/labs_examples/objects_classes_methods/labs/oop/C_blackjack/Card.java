@@ -26,5 +26,9 @@ public class Card {
         this.cardValue = cardValue;
     }
 
+    public void clearHand(){
+
+    }
+
 }
 

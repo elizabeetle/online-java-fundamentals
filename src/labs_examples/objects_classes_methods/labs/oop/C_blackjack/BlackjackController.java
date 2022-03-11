@@ -8,31 +8,41 @@ import java.util.Scanner;
 public class BlackjackController {
 
     static Scanner scan = new Scanner(System.in);
-    static String username;
+    static Deck mainDeck = new Deck();
+
 
 
     public static void main(String[] args) {
 
-    Deck blackJackDeck = new Deck();
-    blackJackDeck.populateCards();
-//    blackJackDeck.deal();
+        mainDeck.populateCards();
 
-    Hand newHand = new Hand();
+
+        playBlackJack();
 
 
 
 
     }
 
-    public static void playBlackJack(){
+    public static void playBlackJack() {
 
         Player humanPlayer = new Player();
         Player aiPlayer = new Player();
+        aiPlayer.name = "Computer";
 
         System.out.println("Welcome to BlackJack by Beetle! Let's get started.");
         System.out.println("Enter your username: ");
-        username = scan.nextLine();
+        humanPlayer.name = scan.nextLine();
         System.out.println();
+        System.out.println("Welcome " + humanPlayer.name + "!");
+
+        mainDeck.initialDeal(humanPlayer);
+        mainDeck.initialDeal(aiPlayer);
+
+        humanPlayer.hand.checkForBlackjack();
+        System.out.println("Your hand's total is: " + humanPlayer.hand.returnScore());
+
+        humanPlayer.hand.hit(humanPlayer);
 
     }
 

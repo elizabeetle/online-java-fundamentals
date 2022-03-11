@@ -1,49 +1,70 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Hand {
 
+
     ArrayList<Card> cards = new ArrayList();
-    private int handValue;
+    int handValue = 0;
 
 
-
-
-
-
-
-/*    public void addCardToHand(){
-        addToHand = new Deck();
-        List<Integer> list = addToHand.getCards();
-
+    public void addCardToHand(Card card){
+        cards.add(card);
     }
-*/
+
 
     public int returnScore(){
 
-        int total = 0;
-
         for(Card x : cards){
-            total += x.getCardValue();
+            handValue += x.getCardValue();
         }
-        return total;
+        return handValue;
     }
 
-    public boolean bust(){
-        boolean bustOrNah;
-        int total = returnScore();
 
+    public boolean checkBust(){
+        boolean bust;
 
-        if(total > 21)
-            bustOrNah = true;
+        if(handValue > 21)
+            bust = true;
         else
-            bustOrNah = false;
+            bust = false;
 
-
-        return bustOrNah;
+        return bust;
     }
 
+    public boolean checkForBlackjack(){
+        boolean blackjack;
+
+        if(handValue == 21) {
+            blackjack = true;
+            System.out.println("Blackjack! You win!");
+            //need to put that the program ends and ask to start a new round or keep playing
+        } else
+            blackjack = false;
+
+        return blackjack;
+    }
+
+    public void hit(Player player){
+        String answer;
+
+        System.out.println("Would you like to hit (y/n)?");
+        answer = BlackjackController.scan.nextLine();
+
+        if(answer.equalsIgnoreCase("y")) {
+            player.deck.deal(player);
+            System.out.println("Your new total is: " + player.hand.returnScore());
+
+        } else if(answer.equalsIgnoreCase("n")) {
+            System.out.println("Your turn is over. Your hand total is: " + player.hand.returnScore());
+        }
+
+    }
+
+    public void emptyHand(){
+        cards.clear();
+    }
 
 }
