@@ -9,12 +9,21 @@ public class Hand {
     int handValue = 0;
 
 
+
+
+    public int getHandValue() {
+        return handValue;
+    }
+
+    public void calculateHand(Card card){
+        handValue += card.getCardValue();
+    }
+
     public void addCardToHand(Card card){
         cards.add(card);
     }
 
-
-    public int returnScore(){
+    public int calculateInitialHand(){
 
         for(Card x : cards){
             handValue += x.getCardValue();
@@ -22,17 +31,36 @@ public class Hand {
         return handValue;
     }
 
-
-    public boolean checkBust(){
+    public boolean checkBust(Player player){
         boolean bust;
 
-        if(handValue > 21)
+        if(handValue > 21) {
             bust = true;
-        else
+            System.out.println("Bust! You lose.");
+            player.hand.emptyHand();
+            BlackjackController.computerWins += 1;
+            BlackjackController.continuePlaying();
+        }else
             bust = false;
 
         return bust;
     }
+
+    public boolean checkBustAI(Player player){
+        boolean bust;
+
+        if(handValue > 21) {
+            bust = true;
+            System.out.println("The casino bust! You win.");
+            player.hand.emptyHand();
+            BlackjackController.playerWins += 1;
+            BlackjackController.continuePlaying();
+        }else
+            bust = false;
+
+        return bust;
+    }
+
 
     public boolean checkForBlackjack(){
         boolean blackjack;
@@ -40,31 +68,20 @@ public class Hand {
         if(handValue == 21) {
             blackjack = true;
             System.out.println("Blackjack! You win!");
-            //need to put that the program ends and ask to start a new round or keep playing
+            BlackjackController.playerWins += 1;
+            BlackjackController.continuePlaying();
         } else
             blackjack = false;
 
         return blackjack;
     }
 
-    public void hit(Player player){
-        String answer;
-
-        System.out.println("Would you like to hit (y/n)?");
-        answer = BlackjackController.scan.nextLine();
-
-        if(answer.equalsIgnoreCase("y")) {
-            player.deck.deal(player);
-            System.out.println("Your new total is: " + player.hand.returnScore());
-
-        } else if(answer.equalsIgnoreCase("n")) {
-            System.out.println("Your turn is over. Your hand total is: " + player.hand.returnScore());
-        }
-
-    }
-
     public void emptyHand(){
         cards.clear();
+    }
+
+    public void clearHandValue(){
+        handValue = 0;
     }
 
 }

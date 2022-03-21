@@ -5,15 +5,20 @@ package labs_examples.sorting_algorithms.examples;
  */
 public class MergeSort {
 
+    //sout some of the variables/arrays as they work
+    //for loops to print all the elements
+
+
     // Driver method
     public static void main(String args[])
     {
-        int arr[] = {12, 11, 13, 5, 6, 7};
+        int arr[] = {12, 11, 13, 5, 6, 7, 3242, 3, 5};
 
         System.out.println("Given Array");
         printArray(arr);
 
         MergeSort ob = new MergeSort();
+        //not totally necessary; need to call it using an object
         ob.sort(arr, 0, arr.length-1);
 
         System.out.println("\nSorted array");
@@ -21,7 +26,10 @@ public class MergeSort {
     }
 
     // Main function that sorts nums[left..right] using merge()
-    void sort(int nums[], int left, int right) {
+
+    //"default" without the "public, protected" keywords
+    void sort(int[] nums, int left, int right) {
+      //good place to comment about what line 28 does:
         if (left < right)
         {
             // Find the middle point

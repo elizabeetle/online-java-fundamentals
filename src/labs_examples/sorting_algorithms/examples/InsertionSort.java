@@ -10,7 +10,7 @@ public class InsertionSort {
         nums = insertionSort(nums);
 
         for(int i : nums){
-            System.out.print(i);
+            System.out.print(i +",");
         }
     }
 

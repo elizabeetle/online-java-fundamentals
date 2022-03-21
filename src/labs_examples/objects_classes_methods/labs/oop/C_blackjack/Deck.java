@@ -2,24 +2,19 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.Random;
 
 
 public class Deck{
 
     Card[] deck = new Card[52];
-    //the above is related to the Card class...
     ArrayList<Integer> usedCards = new ArrayList();
-    ArrayList<Integer> handArrayList = new ArrayList();
-
 
 
     int randomNum;
     int count;
+    String answer;
     private char[] suit = new char[]{'♠', '♦', '♥', '♣'};
-
-
 
 
 
@@ -49,16 +44,21 @@ public class Deck{
 
             //runs this do-while statement while usedCards[] contains the random number
             do{
-                randomNum = ThreadLocalRandom.current().nextInt(0,51 + 1);
+                Random rand = new Random();
+                int upperbound = 52;
+                randomNum = rand.nextInt(upperbound);
                 //checks usedCards[] for the random number to see if it's been drawn
                 if(!usedCards.contains(randomNum)){
                     usedCards.add(randomNum);
 
-                    player.hand.addCardToHand(deck[randomNum]);
+                    Card temp = deck[randomNum];
+                    System.out.println(temp.toString());
+                    player.hand.addCardToHand(temp);
+                    player.hand.calculateHand(deck[randomNum]);
                     break;
             }
 
-            }while(usedCards.contains(randomNum));
+            }while(!usedCards.contains(randomNum));
 
         }
 
@@ -70,12 +70,13 @@ public class Deck{
             do{
                 Random rand = new Random();
                 int upperbound = 52;
-                int randomNum = rand.nextInt(upperbound);
+                randomNum = rand.nextInt(upperbound);
 
                 if(!usedCards.contains(randomNum)){
                     usedCards.add(randomNum);
 
-                    player.hand.addCardToHand(deck[randomNum]);
+                    Card temp = deck[randomNum];
+                    player.hand.addCardToHand(temp);
                     break;
                 }
 
@@ -83,14 +84,59 @@ public class Deck{
         }
      }
 
+    public void hit(Player player){
 
-    public List<Integer> getCards(){
-        return handArrayList;
+        do{
+            System.out.println("Would you like to hit (y/n)?");
+            answer = BlackjackController.scan.nextLine();
+
+            if(answer.equalsIgnoreCase("y")){
+                deal(player);
+                System.out.println("Your new total is: " + player.hand.getHandValue());
+                player.hand.checkForBlackjack();
+                player.hand.checkBust(player);
+
+            }else if(answer.equalsIgnoreCase("n")){
+                System.out.println("Your total is: " + player.hand.getHandValue());
+               //more needs to go here, probs leads into the computer's turn
+                BlackjackController.checkWin();
+            }
+
+        }while(answer.equalsIgnoreCase("y"));
     }
 
+    public void computerAI(Player player){
+        int currentHand = player.hand.calculateInitialHand();
 
+        do{
+            dealAI(player);
+            player.hand.checkBustAI(player);
+            break;
+        }while (currentHand < 16);
+    }
 
+    public void dealAI(Player player){
+        do{
+            Random rand = new Random();
+            int upperbound = 52;
+            randomNum = rand.nextInt(upperbound);
+            //checks usedCards[] for the random number to see if it's been drawn
+            if(!usedCards.contains(randomNum)){
+                usedCards.add(randomNum);
 
+                Card temp = deck[randomNum];
+                System.out.println("\nThe casino drew a: " + temp.toString());
+                player.hand.addCardToHand(temp);
+                player.hand.calculateHand(deck[randomNum]);
+  //              System.out.println("\nThe casino's total hand value is: " + player.hand.getHandValue());
+                break;
+            }
+        }while(!usedCards.contains(randomNum));
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 }
 
 

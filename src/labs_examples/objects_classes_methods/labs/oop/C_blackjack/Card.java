@@ -7,7 +7,12 @@ public class Card {
     private char suit;
     private int cardValue;
 
-
+    @Override
+    public String toString() {
+        return "Card {suit = " + getSuit() +
+                ", cardValue = " + getCardValue() +
+                '}';
+    }
 
     public char getSuit() {
         return suit;
@@ -17,17 +22,12 @@ public class Card {
         this.suit = suit;
     }
 
-
     public int getCardValue() {
         return cardValue;
     }
 
     public void setCardValue(int cardValue) {
         this.cardValue = cardValue;
-    }
-
-    public void clearHand(){
-
     }
 
 }
