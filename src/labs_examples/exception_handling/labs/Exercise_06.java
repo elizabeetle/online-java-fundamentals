@@ -7,3 +7,14 @@ package labs_examples.exception_handling.labs;
  *
  */
 
+public class Exercise_06 {
+
+    public static void main(String[] args) {
+
+    }
+
+    public static void methodOne(){
+
+    }
+
+}
