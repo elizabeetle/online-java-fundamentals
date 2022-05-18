@@ -9,7 +9,7 @@ import java.util.Arrays;
  *
  */
 
-class Example {
+public class Exercise_05 {
 
     public static void main(String[] args) {
         try{

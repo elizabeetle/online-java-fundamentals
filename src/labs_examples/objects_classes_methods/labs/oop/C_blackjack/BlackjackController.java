@@ -57,12 +57,14 @@ public class BlackjackController {
     public static void playBlackJack() {
         aiPlayer.name = "Computer";
 
+        humanPlayer.hand.bets(humanPlayer);
+
         mainDeck.initialDeal(humanPlayer);
         System.out.println("Your hand: "+ humanPlayer.hand.cards.toString());
         mainDeck.initialDeal(aiPlayer);
         System.out.println("The casino is showing a: " + aiPlayer.hand.cards.get(1).toString());
         mainDeck.computerAI(aiPlayer);
-        humanPlayer.hand.checkForBlackjack();
+        humanPlayer.hand.checkForBlackjack(humanPlayer);
         System.out.println("Your hand's total is: " + humanPlayer.hand.calculateInitialHand());
 
         mainDeck.hit(humanPlayer);
@@ -71,21 +73,45 @@ public class BlackjackController {
     public static void checkWin(){
         if(humanPlayer.hand.getHandValue() > aiPlayer.hand.getHandValue()){
             System.out.println("You win! You get double what you put in.");
+            if (humanPlayer.hand.betAnswer == 10)
+                humanPlayer.potValue += 20;
+            if (humanPlayer.hand.betAnswer == 20)
+                humanPlayer.potValue += 40;
+            if (humanPlayer.hand.betAnswer == 30)
+                humanPlayer.potValue += 60;
+            System.out.println("You have " + humanPlayer.potValue + " left.");
+            humanPlayer.hand.betAnswer = 0;
             playerWins += 1;
             continuePlaying();
         }else if(humanPlayer.hand.getHandValue() < aiPlayer.hand.getHandValue()){
             System.out.println("\nThe casino's hand total was: " + aiPlayer.hand.getHandValue());
             System.out.println("You lose! The casino takes your bet.");
+            if (humanPlayer.hand.betAnswer == 10)
+                humanPlayer.potValue -= 10;
+            if (humanPlayer.hand.betAnswer == 20)
+                humanPlayer.potValue -= 20;
+            if (humanPlayer.hand.betAnswer == 30)
+                humanPlayer.potValue -= 30;
+            System.out.println("You have " + humanPlayer.potValue + " left.");
+            humanPlayer.hand.betAnswer = 0;
             computerWins += 1;
             continuePlaying();
         }else{
             System.out.println("\nThe casino's hand total was: " + aiPlayer.hand.getHandValue());
             System.out.println("You tie... you break even.");
+            if (humanPlayer.hand.betAnswer == 10)
+                humanPlayer.potValue += 10;
+            if (humanPlayer.hand.betAnswer == 20)
+                humanPlayer.potValue += 20;
+            if (humanPlayer.hand.betAnswer == 30)
+                humanPlayer.potValue += 30;
+            System.out.println("You have " + humanPlayer.potValue + " left.");
+            humanPlayer.hand.betAnswer = 0;
             continuePlaying();
         }
     }
 
-//how can I write this without static methods
+
     public static void closeScan(){
         scan.close();
     }

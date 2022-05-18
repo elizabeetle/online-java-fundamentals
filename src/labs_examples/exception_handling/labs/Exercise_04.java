@@ -11,6 +11,7 @@ public class Exercise_04 {
 
     public static void main(String[] args) {
         nested();
+        System.out.println("Hello");
     }
 
     public static void nested(){
@@ -22,7 +23,8 @@ public class Exercise_04 {
                 System.out.println(b);
             } catch(ArithmeticException e1){
                 System.out.println("Exception: e1");
-            }try {
+            }
+            try {
                 System.out.println("Inside block2");
                 int b =45/0;
                 System.out.println(b);

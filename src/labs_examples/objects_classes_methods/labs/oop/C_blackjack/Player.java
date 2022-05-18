@@ -4,7 +4,10 @@ public class Player {
 
      String name;
      Hand hand = new Hand();
-     int potValue;
+     int potValue = 300;
+
+
+
 
 
 

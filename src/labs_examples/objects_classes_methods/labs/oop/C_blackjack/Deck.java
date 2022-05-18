@@ -93,7 +93,7 @@ public class Deck{
             if(answer.equalsIgnoreCase("y")){
                 deal(player);
                 System.out.println("Your new total is: " + player.hand.getHandValue());
-                player.hand.checkForBlackjack();
+                player.hand.checkForBlackjack(player);
                 player.hand.checkBust(player);
 
             }else if(answer.equalsIgnoreCase("n")){
