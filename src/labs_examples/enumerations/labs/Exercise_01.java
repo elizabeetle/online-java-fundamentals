@@ -8,3 +8,37 @@ package labs_examples.enumerations.labs;
  *      of this enum from a seperate class.
  */
 
+enum SimpleEmotions{
+    MAD,
+    SAD,
+    HAPPY,
+    FEARFUL
+}
+
+enum CityLiving{
+    CHICAGO(1874, "Apartment"),
+    NEW_YORK(2300, "Shoebox"),
+    BOSTON(1700, "One bedroom apartment"),
+    BALTIMORE(1000, "One bedroom apartment");
+
+
+    private Number price;
+    private String typeOfLivingSpace;
+
+    CityLiving(Number price, String typeOfLivingSpace){
+        this.price = price;
+        this.typeOfLivingSpace = typeOfLivingSpace;
+    }
+
+    public Number getPrice() {
+        return price;
+    }
+
+    public String getTypeOfLivingSpace() {
+        return typeOfLivingSpace;
+    }
+
+    public void getBoth(){
+        System.out.println((getTypeOfLivingSpace() + "" + getPrice()));
+    }
+}
