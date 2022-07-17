@@ -3,6 +3,8 @@ package labs_examples.datastructures.linkedlist.examples;
 /**
  * Created by Kevin Graham - https://codingnomads.co
  */
+
+
 public class CustomLinkedList<T> {
 
     // this "head" variable will always keep track of the first Node in the list.
@@ -27,6 +29,7 @@ public class CustomLinkedList<T> {
      *
      * @param data to be added
      */
+
     public void add(T data) {
         // call the insert() method, pass in the data as well as the current size of the LinkedList
         // by calling the size() method which will return the length of the LinkedList
@@ -38,6 +41,7 @@ public class CustomLinkedList<T> {
      *
      * @param data  to be added
      */
+
     public void insert(T data) {
         // if "head" is null, create new root node
         if (head == null) {
@@ -67,6 +71,7 @@ public class CustomLinkedList<T> {
      *
      * @param index to put the Node
      */
+
     public void remove(int index) {
         if (index == 0) {
 
@@ -128,6 +133,7 @@ public class CustomLinkedList<T> {
      * @param index to get the value
      * @return the value at the index
      */
+
     public T get(int index) {
         try {
             // simple variable to use for looping over the list
@@ -155,6 +161,7 @@ public class CustomLinkedList<T> {
      * @param index to put the data
      * @param data  to be set
      */
+
     public void set(int index, T data) {
         try {
             int count = 0;
@@ -179,6 +186,7 @@ public class CustomLinkedList<T> {
      *
      * @return an Integer size
      */
+
     public int size() {
         int count = 0;
         Node iterator = head;
@@ -197,6 +205,7 @@ public class CustomLinkedList<T> {
      *
      * @return a human readable String
      */
+
     public String toString() {
         Node iterator = head;
         String output = "";
@@ -217,3 +226,5 @@ public class CustomLinkedList<T> {
 
 
 }
+
+

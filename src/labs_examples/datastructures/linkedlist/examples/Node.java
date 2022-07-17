@@ -4,6 +4,8 @@ package labs_examples.datastructures.linkedlist.examples;
  * Created by ryandesmond - https://codingnomads.co
  */
 
+
+
 public class Node<T> {
 
     // a generic variable to hold the data we want to store in the list
@@ -24,3 +26,4 @@ public class Node<T> {
 
     }
 }
+

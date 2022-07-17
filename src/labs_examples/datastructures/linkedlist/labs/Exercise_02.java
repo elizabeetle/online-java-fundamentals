@@ -1,5 +1,7 @@
 package labs_examples.datastructures.linkedlist.labs;
 
+import java.util.LinkedList;
+
 /**
  *      LinkedLists - Exercise_02
  *
@@ -11,3 +13,16 @@ package labs_examples.datastructures.linkedlist.labs;
  *      Also, instead of using the index in the get() and remove() methods, these methods should
  *      get() and remove() based by the Node's value, not it's index.
  */
+
+public class Exercise_02 {
+
+    LinkedList<Book> bookCollection = new LinkedList<>();
+
+    public static void main(String[] args) {
+
+
+    }
+
+
+}
+
